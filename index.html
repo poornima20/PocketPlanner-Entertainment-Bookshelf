@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bookshelf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="grid">
+
+<div class="bookshelf-header">
+  <span class="section-title">THE BOOKSHELF</span>
+
+  <div class="segmented-control">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="finished">Finished</button>
+    <button data-filter="reading">Reading</button>
+    <button data-filter="toread">To Read</button>
+  </div>
+</div>
+
+<!-- BOOK SHELF -->
+<section class="shelf" id="shelf"></section>
+
+<div id="addBookModal" class="modal hidden">
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3>Add Book</h3>
+      <button id="closeModal">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <label>Title</label>
+      <input id="titleInput" placeholder="Enter book title" />
+
+      <label>Author</label>
+      <input id="authorInput" placeholder="Enter author name" />
+
+      <label>Cover Image</label>
+      <input id="coverInput" placeholder="Paste image URL" />
+
+      <label>Total Pages</label>
+      <input id="pagesInput" type="number" placeholder="e.g. 320" />
+
+    </div>
+  <button id="deleteBookBtn" class="delete-btn hidden">
+    Delete Book
+  </button>
+    <button id="saveBookBtn" class="save-btn">Save Book</button>
+
+  </div>
+</div>
+
+<div class="pagination" id="pagination">
+  <button id="prevBtn"><i data-lucide="chevron-left"></i></button>
+  <span id="pageIndicator">1 / 1</span>
+  <button id="nextBtn"><i data-lucide="chevron-right"></i></button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
