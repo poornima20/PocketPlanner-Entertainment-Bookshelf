@@ -25,7 +25,7 @@ body {
 
 /* TITLE */
 .section-title {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: #6b6b6b;
 }
@@ -46,6 +46,15 @@ body {
   color: #5f6368;
   border-radius: 6px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* icon size */
+.segmented-control button svg {
+  width: 12px;
+  height: 12px;
 }
 
 .segmented-control button.active {
@@ -58,17 +67,49 @@ body {
   background: rgba(0,0,0,0.04);
 }
 
+@media (max-width: 600px) {
+
+  .segmented-control button span {
+    display: none; /* ❌ hide text */
+  }
+
+  .segmented-control button {
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .segmented-control button i {
+    width: 16px;
+    height: 16px;
+  }
+
+}
+
 /* SHELF (PAGING CONTAINER) */
 .shelf {
   display: grid;
 
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
 
+  gap: 16px;
   padding: 20px;
-
-  overflow-y: auto;
 }
+
+@media (max-width: 600px) {
+    .shelf {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    padding: 16px;
+    justify-items: center;
+  }
+
+  .book {
+    width: 100%;
+    max-width: none;   /* 🔥 REMOVE constraint */
+    aspect-ratio: 2 / 3;
+  }
+}
+
 
 .shelf::-webkit-scrollbar {
   display: none;
@@ -77,6 +118,7 @@ body {
 /* BOOK */
 .book {
   width: 100%;
+  max-width: 140px;   /* prevents huge books on desktop */
   aspect-ratio: 2 / 3;
 }
 
@@ -224,14 +266,10 @@ body {
 }
 
 @media (max-width: 600px) {
-  .book {
-    width: 110px;
-    height: 160px;
-  }
 
   .page {
     grid-template-columns: repeat(auto-fill, 110px);
-    gap: 12px;
+    gap: 16px;
   }
 }
 

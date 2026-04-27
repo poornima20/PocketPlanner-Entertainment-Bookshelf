@@ -153,15 +153,20 @@ function createBookElement(book) {
       </div>
     `;
 
-    addDiv.onclick = () => {
-      document.getElementById("addBookModal").classList.remove("hidden");
-    };
+addDiv.onclick = () => {
+  editingBookId = null;
 
-      // ✅ CLEAR HERE ONLY
+  // 🔥 CLEAR FORM PROPERLY
   document.getElementById("titleInput").value = "";
   document.getElementById("authorInput").value = "";
   document.getElementById("pagesInput").value = "";
   document.getElementById("coverInput").value = "";
+
+  // 🔥 HIDE DELETE BUTTON (not editing anymore)
+  document.getElementById("deleteBookBtn").classList.add("hidden");
+
+  document.getElementById("addBookModal").classList.remove("hidden");
+};
 
     return addDiv;
   }
@@ -244,7 +249,7 @@ if (!title || !author || !totalPages || !cover) {
     }
 
     editingBookId = null;
-    document.getElementById("deleteBookBtn").classList.remove("hidden");
+    document.getElementById("deleteBookBtn").classList.add("hidden");
 
   } else {
     // ➕ ADD
