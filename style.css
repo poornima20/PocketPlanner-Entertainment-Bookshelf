@@ -11,8 +11,8 @@ body {
   font-family: Inter, sans-serif;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 /* HEADER */
@@ -60,48 +60,23 @@ body {
 
 /* SHELF (PAGING CONTAINER) */
 .shelf {
-  flex: 1; /* 🔥 THIS pushes pagination down */
+  display: grid;
 
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
 
-  padding: 0 16px;
+  padding: 20px;
+
+  overflow-y: auto;
 }
 
 .shelf::-webkit-scrollbar {
   display: none;
 }
 
-/* PAGE */
-.page {
-  display: grid;
-
-  /* 🔥 3 FIXED ROWS */
-  grid-template-rows: repeat(3, auto);
-
-  /* 🔥 AUTO COLUMNS */
-  grid-auto-flow: column;
-
-  /* column width = book width */
-  grid-auto-columns: 130px;
-
-  gap: 18px;
-
-  justify-content: start;
-  align-content: center;
-
-  padding: 20px 24px;
-
-  width: 100%;
-  flex-shrink: 0;
-  box-sizing: border-box;
-}
-
 /* BOOK */
 .book {
   width: 100%;
-  max-width: 120px;
   aspect-ratio: 2 / 3;
 }
 

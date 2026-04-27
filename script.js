@@ -44,25 +44,9 @@ function renderBooks(filter = "all") {
 
   filtered = [{ type: "add" }, ...filtered];
 
-  const itemsPerPage = getItemsPerPage();
-  let pages = [];
-
-  for (let i = 0; i < filtered.length; i += itemsPerPage) {
-    pages.push(filtered.slice(i, i + itemsPerPage));
-  }
-
-  pages.forEach(pageBooks => {
-    const pageDiv = document.createElement("div");
-    pageDiv.className = "page";
-
-    pageBooks.forEach(book => {
-      pageDiv.appendChild(createBookElement(book));
-    });
-
-    shelf.appendChild(pageDiv);
+  filtered.forEach(book => {
+    shelf.appendChild(createBookElement(book));
   });
-
-  setupPagination(pages.length);
 
   requestAnimationFrame(() => {
     initIcons();
