@@ -2,11 +2,31 @@ const STORAGE_KEY = "fullmoon.pocketplanner.bookshelf";
 let activeFlipId = null;
 let editingBookId = null;
 
-let books = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+const savedBooks =
+  JSON.parse(
+    localStorage.getItem(STORAGE_KEY)
+  );
+
+let books =
+  savedBooks?.data || [];
 
 // 🔹 SAVE
 function saveBooks() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
+
+  localStorage.setItem(
+
+    STORAGE_KEY,
+
+    JSON.stringify({
+
+      data: books,
+
+      updatedAt: Date.now()
+
+    })
+
+  );
+
 }
 
 // 🔹 ICON INIT (FIXES LUCIDE BREAK)
