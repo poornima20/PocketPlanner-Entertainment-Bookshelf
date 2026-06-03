@@ -27,6 +27,24 @@ function saveBooks() {
 
   );
 
+  notifyDashboardSync();
+
+}
+
+function notifyDashboardSync() {
+
+  if (window.parent !== window) {
+
+    window.parent.postMessage(
+      {
+        type: "plannerChanged",
+        planner: STORAGE_KEY
+      },
+      "*"
+    );
+
+  }
+
 }
 
 // 🔹 ICON INIT (FIXES LUCIDE BREAK)
